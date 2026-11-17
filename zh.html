@@ -210,17 +210,21 @@
 
     <section class="card">
       <h2>三、隐私政策与原深感摄像头（TrueDepth API）说明</h2>
-      <p>PPaint 严格遵循隐私保护原则设计：</p>
+      <p>PPaint 严格遵循隐私保护原则设计，本章节完整说明本应用对各类设备数据及面部数据的采集、使用、披露、共享、保留、存储与删除规则：</p>
+
+      <h3>3.1 零数据收集与完全离线运行</h3>
+      <p>PPaint 不包含任何网络请求代码，不接入任何第三方统计、分析或广告 SDK，不收集、不存储、不传输也不共享您的任何个人信息或创作内容。您的作品、图层与自定义画笔均仅保存在本机。</p>
+
+      <h3>3.2 照片库权限说明（仅添加）</h3>
+      <p>仅在您主动选择将导出作品或缩时视频保存到系统「照片」应用时，使用「仅添加照片」权限写入文件；PPaint 不会读取您相册中的已有照片。</p>
+
+      <h3>3.3 原深感摄像头与面容数据（TrueDepth API / Face Data）：采集、使用、披露、共享、保留与删除</h3>
       <ul>
-        <li><strong>零数据收集与完全离线：</strong>本应用不包含任何网络请求代码，不接入任何第三方统计、分析或广告 SDK，不收集、不存储、不传输也不共享您的任何个人信息或创作内容。</li>
-        <li><strong>照片库权限说明：</strong>仅在您主动选择将导出作品或视频保存到系统「照片」应用时，使用「仅添加照片」权限写入文件；PPaint 不会读取您相册中的已有照片。</li>
-        <li><strong>原深感摄像头与面容数据（TrueDepth API / Face Data）披露：</strong>
-          <ul>
-            <li><strong>访问的数据与用途：</strong>在支持原深感摄像头的设备上，仅当您主动打开可选的「AR 人脸预览」功能（<code>工作台</code> → <code>•••（操作）</code> → <code>辅助</code> → <code>AR 人脸预览</code>）时，PPaint 会调用 Apple 系统 <code>ARKit</code>（<code>ARFaceTrackingConfiguration</code>、<code>ARSCNFaceGeometry</code> 与 <code>ARFaceGeometry</code>），仅用于在画布上生成二维人脸 UV 线框参考图层，以及将您的二维画布作为漫反射贴图实时渲染在三维面部网格上预览。</li>
-            <li><strong>存储与保留策略：</strong>所有摄像头画面与面部网格几何数据<strong>仅在设备本机内存中实时处理与渲染，绝不录制、绝不写入磁盘保存、绝不持久化保留</strong>。当您关闭「AR 人脸预览」面板或将应用切换至后台时，AR 会话与摄像头访问会立即停止。</li>
-            <li><strong>第三方共享说明：</strong>本应用绝不会将任何摄像头画面或面容数据发送至设备外部，也不会与任何第三方共享。</li>
-          </ul>
-        </li>
+        <li><strong>数据采集（Collection）：</strong>仅当您在配备原深感摄像头（Face ID）的设备上主动打开「AR 人脸预览」（<code>工作台</code> → <code>•••</code> → <code>辅助</code> → <code>AR 人脸预览</code>）并授予相机权限时，PPaint 才会通过 Apple 系统 <code>ARKit</code>（<code>ARFaceTrackingConfiguration</code>、<code>ARFaceAnchor</code>、<code>ARFaceGeometry</code>、<code>ARSCNFaceGeometry</code>）访问以下实时数据：前置摄像头实时画面、实时三维人脸网格几何与姿态及跟踪状态（<code>isTracked</code>）、环境光估计（<code>isLightEstimationEnabled</code>），以及通用且不具身份识别意义的 UV 网格拓扑（<code>textureCoordinates</code>、<code>triangleIndices</code>）。本应用绝不采集用于人脸识别、身份验证或用户画像的生物特征数据。</li>
+        <li><strong>使用目的（Use）：</strong>上述数据仅在本机用于实时将二维画布渲染到三维人脸网格上（预览面绘、妆面与贴纸效果），以及按需生成中性的二维人脸 UV 线框参考图层。</li>
+        <li><strong>披露与授权同意（Disclosure）：</strong>开始跟踪前，PPaint 会在应用内展示明确的隐私说明（阐明画面与人脸数据只在本机实时显示，不录制、不保存、不上传），随后才请求系统相机权限；拒绝授权不影响正常绘画功能。</li>
+        <li><strong>第三方共享（Sharing）：</strong>绝不共享。PPaint 不含任何联网代码、统计分析、云同步或广告 SDK，摄像头画面与面容数据绝不会离开设备或提供给任何第三方。</li>
+        <li><strong>存储、保留与删除机制（Storage, Retention &amp; Deletion）：</strong>零持久化存储、零保留。所有画面与面部网格数据仅在内存中逐帧实时处理——绝不录制、不写入磁盘、不存入作品文件。关闭窗口或切到后台时 AR 会话立即暂停并从内存释放全部跟踪数据，因此不存在需要手动删除的面容数据（<code>UserDefaults</code> 仅保存是否已阅读过引导说明的布尔标志）。</li>
       </ul>
     </section>
 
@@ -230,3 +234,4 @@
   </div>
 </body>
 </html>
+
