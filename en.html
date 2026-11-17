@@ -210,17 +210,21 @@
 
     <section class="card">
       <h2>3. Privacy Policy &amp; TrueDepth Camera Data Disclosure</h2>
-      <p>PPaint is built with strict privacy protection by design:</p>
+      <p>PPaint is built with strict privacy protection by design. This section explains our complete collection, use, disclosure, sharing, storage, retention, and deletion practices:</p>
+
+      <h3>3.1 Zero Data Collection &amp; 100% Offline Operation</h3>
+      <p>PPaint contains no networking code, no third-party analytics, and no advertising SDKs. We do not collect, store, transmit, or share any personal data or user content. All artworks, layers, and custom brushes remain strictly local on your device.</p>
+
+      <h3>3.2 Photo Library Access (Add-Only)</h3>
+      <p>Add-only Photo Library permission is requested only when you explicitly choose to save an exported artwork or timelapse video to your device's Photos app. PPaint never reads your existing photo library.</p>
+
+      <h3>3.3 TrueDepth API &amp; Face Data (Collection, Use, Disclosure, Sharing, Retention &amp; Deletion)</h3>
       <ul>
-        <li><strong>Zero Data Collection &amp; 100% Offline:</strong> PPaint contains no networking code, no third-party analytics, and no advertising SDKs. We do not collect, store, transmit, or share any personal data or user content.</li>
-        <li><strong>Photo Library Access:</strong> Add-only Photo Library permission is requested only when you explicitly choose to save an exported artwork or video to your device's Photos app. PPaint never reads your existing photo library.</li>
-        <li><strong>TrueDepth API &amp; Face Data Disclosure:</strong>
-          <ul>
-            <li><strong>What Data is Accessed &amp; Purpose:</strong> On supported devices with a TrueDepth camera, PPaint uses Apple's <code>ARKit</code> (<code>ARFaceTrackingConfiguration</code>, <code>ARSCNFaceGeometry</code>, and <code>ARFaceGeometry</code>) solely when you open the optional <strong>AR face preview</strong> feature (<code>Workspace</code> → <code>••• (Actions)</code> → <code>Assist</code> → <code>AR face preview</code>). This data is used exclusively to generate a 2D UV wireframe template layer on the canvas and to render your 2D canvas drawing as a live 3D texture mapped onto your face mesh in real time.</li>
-            <li><strong>Storage &amp; Retention:</strong> All camera frames and face mesh geometry data are processed <strong>ephemerally in real-time memory on the device only</strong>. Face data is <strong>never recorded, never written to disk, and never retained</strong>. The AR camera session pauses and stops immediately as soon as you close the "AR face preview" sheet or switch the app to the background.</li>
-            <li><strong>Third-Party Sharing:</strong> No camera images or face data are ever transmitted off the device or shared with any third parties.</li>
-          </ul>
-        </li>
+        <li><strong>Collection:</strong> Only when you open AR face preview (<code>Workspace</code> → <code>•••</code> → <code>Assist</code> → <code>AR face preview</code>) on a TrueDepth device and allow camera access, PPaint accesses real-time ARKit data (<code>ARFaceTrackingConfiguration</code>, <code>ARFaceAnchor</code>, <code>ARFaceGeometry</code>, <code>ARSCNFaceGeometry</code>): live front camera frames, real-time 3D face mesh geometry/pose/tracking state (<code>isTracked</code>), ambient light estimation (<code>isLightEstimationEnabled</code>), and generic non-identifying UV topology (<code>textureCoordinates</code>, <code>triangleIndices</code>). No facial-recognition biometrics, authentication, or profiling data are collected.</li>
+        <li><strong>Use:</strong> Used solely on-device to render your 2D canvas drawing onto the 3D face mesh in real time (for face paint, makeup, and stickers) and optionally draw a neutral 2D UV wireframe guide layer.</li>
+        <li><strong>Disclosure &amp; Consent:</strong> Before tracking begins, PPaint displays an in-app privacy notice stating that video and face data are displayed only in real time on-device and never recorded, saved, or uploaded, then requests camera permission. Declining permission does not affect painting.</li>
+        <li><strong>Sharing:</strong> None. PPaint has no networking code, analytics, cloud sync, or ad SDKs. Camera frames and face data never leave your device or go to third parties.</li>
+        <li><strong>Storage, Retention &amp; Deletion:</strong> Zero persistent storage and zero retention. All frames and face geometry are processed transiently in RAM per frame—never recorded, written to disk, or saved to artwork files. Closing the sheet or backgrounding immediately pauses the AR session and frees tracking data from memory, so no stored face data exists to delete (<code>UserDefaults</code> stores only an intro-dismissed boolean).</li>
       </ul>
     </section>
 
@@ -230,3 +234,4 @@
   </div>
 </body>
 </html>
+
